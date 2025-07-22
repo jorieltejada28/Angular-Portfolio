@@ -1,31 +1,56 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
+<div class="flex items-center justify-center min-h-screen bg-gray-100 font-sans">
   <div class="w-full max-w-sm p-6 bg-white rounded-2xl shadow-md">
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-700">Sign In</h2>
 
     <form>
-      <div class="mb-4">
-        <label class="block text-gray-600 text-sm mb-2" for="email">Email</label>
-        <input type="email" id="email" name="email"
-          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400"
-          placeholder="Enter your email" />
+      <!-- Email -->
+      <div class="relative mb-5">
+        <input type="email" id="email" name="email" placeholder=" "
+          class="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-md placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700" />
+        <label for="email"
+          class="absolute left-4 top-2 text-sm text-gray-600 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-600">
+          Email
+        </label>
       </div>
 
-      <div class="mb-6">
-        <label class="block text-gray-600 text-sm mb-2" for="password">Password</label>
-        <input type="password" id="password" name="password"
-          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400"
-          placeholder="Enter your password" />
+      <!-- Password -->
+      <div class="relative mb-6">
+        <input type="password" id="password" name="password" placeholder=" "
+          class="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-md placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700" />
+        <label for="password"
+          class="absolute left-4 top-2 text-sm text-gray-600 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-600">
+          Password
+        </label>
       </div>
 
+      <!-- Submit -->
       <button type="submit"
         class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200">
         Login
       </button>
-    </form>
 
-    <p class="mt-4 text-sm text-center text-gray-600">
-      Don't have an account?
-      <a href="/signup" class="text-blue-500 hover:underline">Sign Up</a>
-    </p>
+      <!-- Divider -->
+      <div class="flex items-center my-4">
+        <hr class="flex-grow border-t border-gray-300">
+        <span class="mx-2 text-gray-400 text-sm">or</span>
+        <hr class="flex-grow border-t border-gray-300">
+      </div>
+
+      <!-- Continue with Google -->
+      <div>
+        <button type="button"
+          class="flex items-center justify-center w-full border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-100 transition duration-200">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo"
+            class="w-5 h-5 mr-2">
+          Continue with Google
+        </button>
+      </div>
+
+      <!-- Sign Up Link -->
+      <p class="mt-4 text-sm text-center text-gray-600">
+        Don't have an account?
+        <a href="/signup" class="text-blue-500 hover:underline">Sign Up</a>
+      </p>
+    </form>
   </div>
 </div>

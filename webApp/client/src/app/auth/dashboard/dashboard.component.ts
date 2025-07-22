@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { TopNavbarComponent } from '../../components/top-navbar/top-navbar.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,7 @@ import { TopNavbarComponent } from '../../components/top-navbar/top-navbar.compo
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
+  constructor(private titleService: Title) {}
   sidebarOpen = true;
 
   ngOnInit(): void {
@@ -17,6 +19,7 @@ export class DashboardComponent implements OnInit {
     if (storedSidebar !== null) {
       this.sidebarOpen = storedSidebar === 'true';
     }
+    this.titleService.setTitle('Dashboard');
   }
 
   toggleSidebar() {
