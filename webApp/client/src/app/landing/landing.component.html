@@ -1,0 +1,56 @@
+<!-- Hero Section -->
+<div
+  class="min-h-screen bg-gradient-to-r from-blue-100 via-white to-blue-100 flex flex-col justify-center items-center px-4">
+  <h1 class="text-5xl font-extrabold text-blue-700 text-center mb-4">
+    Welcome to Our Website
+  </h1>
+  <p class="text-lg text-gray-700 text-center max-w-xl mb-8">
+    Discover a modern web experience built with Angular and styled using Tailwind CSS. Clean. Fast. Responsive.
+  </p>
+  <a routerLink="/signup"
+    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
+    Get Started
+  </a>
+</div>
+
+<!-- About Section -->
+<section class="py-20 px-6 bg-white text-center">
+  <h2 class="text-3xl font-bold text-blue-800 mb-4">About Us</h2>
+  <p class="text-gray-700 max-w-3xl mx-auto">
+    We are committed to delivering exceptional user experiences using modern technologies like Angular and Tailwind CSS.
+    Our mission is to create intuitive, fast, and visually pleasing web applications.
+  </p>
+</section>
+
+<!-- Features Section -->
+<section class="py-20 px-6 bg-gray-50 text-center">
+  <h2 class="text-3xl font-bold text-blue-800 mb-4">Features</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-8">
+    <div *ngFor="let feature of features" class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-xl font-semibold text-blue-600 mb-2">{{ feature.title }}</h3>
+      <p class="text-gray-600">{{ feature.description }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-20 px-6 bg-blue-50 text-center">
+  <h2 class="text-3xl font-bold text-blue-800 mb-4">Contact Us</h2>
+  <p class="text-gray-700 max-w-xl mx-auto mb-8">
+    Have questions or feedback? We'd love to hear from you. Reach out through the form or send us an email.
+  </p>
+  <div class="max-w-xl mx-auto text-left">
+    <form class="space-y-4">
+      <input type="text" placeholder="Your Name"
+        class="w-full border border-gray-300 p-3 rounded-lg placeholder-gray-400" />
+      <input type="email" placeholder="Your Email"
+        class="w-full border border-gray-300 p-3 rounded-lg placeholder-gray-400" />
+      <textarea rows="4" placeholder="Your Message"
+        class="w-full border border-gray-300 p-3 rounded-lg placeholder-gray-400"></textarea>
+      <button type="submit"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>

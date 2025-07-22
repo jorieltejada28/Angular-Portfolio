@@ -1,0 +1,13 @@
+<aside
+  class="h-full bg-gray-800 text-white space-y-6 overflow-hidden transition-all duration-300 ease-in-out"
+  [ngClass]="{ 'w-64 p-4': sidebarOpen, 'w-0 p-0': !sidebarOpen }"
+>
+  <div *ngIf="sidebarOpen">
+    <h2 class="text-xl font-bold mb-4">Menu</h2>
+    <nav class="flex flex-col space-y-2">
+      <a routerLink="/dashboard" class="hover:bg-gray-700 px-3 py-2 rounded">Dashboard</a>
+      <a routerLink="/profile" class="hover:bg-gray-700 px-3 py-2 rounded">Profile</a>
+      <a routerLink="/settings" class="hover:bg-gray-700 px-3 py-2 rounded">Settings</a>
+    </nav>
+  </div>
+</aside>

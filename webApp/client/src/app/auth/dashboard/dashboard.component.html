@@ -1,0 +1,14 @@
+<div class="flex h-screen">
+  <app-sidebar [sidebarOpen]="sidebarOpen"></app-sidebar>
+
+  <div class="flex-1 flex flex-col">
+    <app-top-navbar
+      (toggleSidebar)="toggleSidebar()"
+    ></app-top-navbar>
+
+    <main class="flex-1 p-6 bg-gray-100 overflow-y-auto">
+      <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
+      <p>Welcome to your dashboard!</p>
+    </main>
+  </div>
+</div>

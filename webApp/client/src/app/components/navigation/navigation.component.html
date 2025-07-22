@@ -1,0 +1,21 @@
+<nav class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
+  <!-- Logo (Left) -->
+  <a routerLink="/" class="text-2xl font-bold text-blue-600 ml-15">MyApp</a>
+
+  <!-- Center Navigation Links -->
+  <ul class="flex space-x-6">
+    <li *ngFor="let link of navLinks">
+      <a [routerLink]="link.path" routerLinkActive="text-blue-500" [ngClass]="navLinkClass">
+        {{ link.label }}
+      </a>
+    </li>
+  </ul>
+
+  <!-- Right Auth Links -->
+  <div class="flex space-x-4 mr-15">
+    <a *ngFor="let auth of authLinks" [routerLink]="auth.path" routerLinkActive="text-blue-500"
+      [class]="buttonClass + ' ' + auth.classes">
+      {{ auth.label }}
+    </a>
+  </div>
+</nav>
