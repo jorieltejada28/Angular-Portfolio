@@ -8,7 +8,7 @@
     <!-- Profile Picture with DaisyUI Dropdown -->
     <div class="relative flex items-center justify-center mb-4">
       <!-- DaisyUI Dropdown Wrapper -->
-      <div class="relative group w-20 h-20" (clickOutside)="dropdownOpen = false">
+      <div class="relative group w-40 h-40" (clickOutside)="dropdownOpen = false">
         <!-- Profile Image -->
         <img src="https://ui-avatars.com/api/?name=Joriel+Tejada&background=0D8ABC&color=fff" alt="Profile"
           class="w-full h-full rounded-full border-5 border-white shadow-md" />
@@ -17,13 +17,15 @@
         <div
           class="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center cursor-pointer"
           (click)="showModal = true">
-          <span class="text-white text-sm font-semibold">View</span>
+          <span class="flex items-center gap-2 text-white text-lg font-bold">
+            View Image
+          </span>
         </div>
       </div>
 
       <!-- Toggle Dropdown Icon -->
       <div
-        class="absolute bottom-0 right-0 p-1 rounded-full shadow cursor-pointer z-10 mr-19 transition-colors duration-200"
+        class="absolute bottom-0 right-0 p-1 rounded-full shadow cursor-pointer z-10 mr-15 transition-colors duration-200"
         [ngClass]="{
           'bg-gray-800 text-white hover:bg-gray-300 hover:text-gray-800': dropdownOpen,
           'bg-white text-gray-800 hover:bg-gray-700 hover:text-white': !dropdownOpen
@@ -36,7 +38,7 @@
 
       <!-- Dropdown Menu -->
       <ul *ngIf="dropdownOpen"
-        class="absolute top-24 left-1/2 -translate-x-1/2 z-20 menu p-2 shadow bg-base-100 text-white rounded-box w-40">
+        class="absolute top-44 left-18 -translate-x-1 z-20 menu p-2 shadow bg-base-100 text-white rounded-box w-40">
         <li>
           <a (click)="showModal = true; dropdownOpen = false">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24"
@@ -72,9 +74,18 @@
     </div>
 
     <nav class="flex flex-col space-y-2">
-      <a routerLink="/dashboard" class="hover:bg-gray-700 px-3 py-2 rounded">Dashboard</a>
-      <a routerLink="/profile" class="hover:bg-gray-700 px-3 py-2 rounded">Profile</a>
-      <a routerLink="/settings" class="hover:bg-gray-700 px-3 py-2 rounded">Settings</a>
+      <a routerLink="/admin/dashboard" routerLinkActive="bg-gray-700 text-white"
+        class="px-3 py-2 rounded hover:bg-gray-700 hover:text-white">
+        Dashboard
+      </a>
+      <a routerLink="/admin/profile" routerLinkActive="bg-gray-700 text-white"
+        class="px-3 py-2 rounded hover:bg-gray-700 hover:text-white">
+        Profile
+      </a>
+      <a routerLink="/admin/settings" routerLinkActive="bg-gray-700 text-white"
+        class="px-3 py-2 rounded hover:bg-gray-700 hover:text-white">
+        Settings
+      </a>
     </nav>
   </div>
 </aside>
