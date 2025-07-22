@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from '../../components/sidebar/sidebar.component';
-import { TopNavbarComponent } from '../../components/top-navbar/top-navbar.component';
+import { SidebarComponent } from '../../../components/sidebar/sidebar.component';
+import { TopNavbarComponent } from '../../../components/top-navbar/top-navbar.component';
 import { Title } from '@angular/platform-browser';
 
 @Component({
