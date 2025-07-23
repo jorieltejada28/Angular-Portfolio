@@ -1,11 +1,12 @@
 import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SkeletonComponent } from './skeleton/skeleton.component';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, SkeletonComponent],
   templateUrl: './navigation.component.html',
 })
 export class NavigationComponent implements AfterViewInit {
@@ -39,7 +40,7 @@ export class NavigationComponent implements AfterViewInit {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         this.isLoading = false;
-        this.cdr.detectChanges(); 
+        this.cdr.detectChanges();
       });
     });
   }

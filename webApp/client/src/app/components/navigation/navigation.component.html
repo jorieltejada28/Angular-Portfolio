@@ -1,13 +1,4 @@
-<!-- Skeleton Loading -->
-<nav *ngIf="isLoading" class="animate-pulse bg-gray-100 px-6 py-4 flex items-center justify-between">
-  <div class="h-6 w-24 bg-blue-300 rounded"></div>
-  <div class="flex space-x-6">
-    <div class="h-5 w-16 bg-gray-300 rounded" *ngFor="let _ of navLinks"></div>
-  </div>
-  <div class="flex space-x-4">
-    <div class="h-8 w-20 bg-blue-300 rounded" *ngFor="let _ of authLinks"></div>
-  </div>
-</nav>
+<app-skeleton *ngIf="isLoading" />
 
 <!-- Actual Navigation -->
 <nav *ngIf="!isLoading" class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
