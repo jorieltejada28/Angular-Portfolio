@@ -1,8 +1,20 @@
-<nav class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
-  <!-- Logo (Left) -->
+<!-- Skeleton Loading -->
+<nav *ngIf="isLoading" class="animate-pulse bg-gray-100 px-6 py-4 flex items-center justify-between">
+  <div class="h-6 w-24 bg-blue-300 rounded"></div>
+  <div class="flex space-x-6">
+    <div class="h-5 w-16 bg-gray-300 rounded" *ngFor="let _ of navLinks"></div>
+  </div>
+  <div class="flex space-x-4">
+    <div class="h-8 w-20 bg-blue-300 rounded" *ngFor="let _ of authLinks"></div>
+  </div>
+</nav>
+
+<!-- Actual Navigation -->
+<nav *ngIf="!isLoading" class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
+  <!-- Logo -->
   <a routerLink="/" class="text-2xl font-bold text-blue-600 ml-15">My App</a>
 
-  <!-- Center Navigation Links -->
+  <!-- Center Links -->
   <ul class="flex space-x-6">
     <li *ngFor="let link of navLinks">
       <a [routerLink]="link.path" routerLinkActive="text-blue-500" [ngClass]="navLinkClass">
@@ -11,7 +23,7 @@
     </li>
   </ul>
 
-  <!-- Right Auth Links -->
+  <!-- Right Auth -->
   <div class="flex space-x-4 mr-15">
     <a *ngFor="let auth of authLinks" [routerLink]="auth.path" routerLinkActive="text-blue-500"
       [class]="buttonClass + ' ' + auth.classes">

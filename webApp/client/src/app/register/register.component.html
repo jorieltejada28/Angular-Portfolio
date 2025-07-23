@@ -1,9 +1,13 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100 font-sans">
+<!-- Skeleton Loader -->
+<app-register-skeleton *ngIf="loading" />
+
+<!-- Actual Sign Up Form -->
+<div *ngIf="!loading" class="flex items-center justify-center min-h-screen bg-gray-100 font-sans">
   <div class="w-full max-w-sm p-6 bg-white rounded-2xl shadow-md">
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-700">Sign Up</h2>
 
     <form>
-      <!-- Full Name -->
+      <!-- Name -->
       <div class="relative mb-5">
         <input type="text" id="name" name="name" placeholder=" "
           class="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-md placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700" />
@@ -24,7 +28,7 @@
       </div>
 
       <!-- Password -->
-      <div class="relative mb-6">
+      <div class="relative mb-5">
         <input type="password" id="password" name="password" placeholder=" "
           class="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-md placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700" />
         <label for="password"
@@ -48,12 +52,12 @@
         class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200">
         Sign Up
       </button>
-    </form>
 
-    <!-- Sign Up Link -->
-    <p class="mt-4 text-sm text-center text-gray-600">
-      Already Have an account?
-      <a href="/signin" class="text-blue-500 hover:underline">Sign In</a>
-    </p>
+      <!-- Redirect Link -->
+      <p class="mt-4 text-sm text-center text-gray-600">
+        Already have an account?
+        <a href="/signin" class="text-blue-500 hover:underline">Sign In</a>
+      </p>
+    </form>
   </div>
 </div>

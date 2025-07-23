@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { FEATURES } from '../data/features';
 
 @Component({
   selector: 'app-landing',
@@ -9,25 +10,25 @@ import { Title } from '@angular/platform-browser';
   imports: [CommonModule, RouterModule],
   templateUrl: './landing.component.html',
 })
-export class LandingComponent {
-  constructor(private titleService: Title) {}
+export class LandingComponent implements AfterViewInit {
+  isLoading = true;
+  features: any[] = [];
+  currentBg: 'white' | 'gray-50' | 'blue-50' = 'white';
 
-  ngOnInit(): void {
+  constructor(
+    private titleService: Title,
+    private cdr: ChangeDetectorRef
+  ) { }
+
+  ngAfterViewInit(): void {
     this.titleService.setTitle('Landing Page');
-  }
+    this.features = FEATURES; // Load after DOM is ready
 
-  readonly features = [
-    {
-      title: 'Responsive Design',
-      description: 'Looks great on all devices with adaptive layout and responsive components.'
-    },
-    {
-      title: 'Fast Performance',
-      description: 'Optimized for speed and efficiency using Angular best practices.'
-    },
-    {
-      title: 'Modern UI',
-      description: 'Sleek interface with Tailwind CSS for a consistent and professional look.'
-    }
-  ];
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        this.isLoading = false;
+        this.cdr.detectChanges(); // Ensure skeleton loader disappears
+      });
+    });
+  }
 }
