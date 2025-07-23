@@ -23,14 +23,14 @@ export class NavigationComponent implements AfterViewInit {
 
   readonly authLinks = [
     {
-      label: 'Sign Up',
-      path: '/signup',
-      classes: 'text-blue-600 border border-blue-600 hover:bg-blue-100'
-    },
-    {
       label: 'Sign In',
       path: '/signin',
       classes: 'text-white bg-blue-600 hover:bg-blue-700'
+    },
+    {
+      label: 'Sign Up',
+      path: '/signup',
+      classes: 'text-blue-600 border border-blue-600 hover:bg-blue-100'
     }
   ];
 
