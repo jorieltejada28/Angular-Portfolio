@@ -1,15 +1,18 @@
+<!-- Skeleton Loading --->
 <ng-container *ngIf="isLoading; else loadedContent">
   <app-skeleton [currentBg]="'white'"></app-skeleton>
 </ng-container>
 
 <ng-template #loadedContent>
   <!-- Hero Section -->
-  <div class="min-h-screen bg-gradient-to-r from-blue-100 via-white to-blue-100 flex flex-col justify-center items-center px-4">
+  <div
+    class="min-h-screen bg-gradient-to-r from-blue-100 via-white to-blue-100 flex flex-col justify-center items-center px-4">
     <h1 class="text-5xl font-extrabold text-blue-700 text-center mb-4">Welcome to Our Website</h1>
     <p class="text-lg text-gray-700 text-center max-w-xl mb-8">
       Discover a modern web experience built with Angular and styled using Tailwind CSS. Clean. Fast. Responsive.
     </p>
-    <a routerLink="/signup" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
+    <a routerLink="/signup"
+      class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
       Get Started
     </a>
   </div>
@@ -18,7 +21,8 @@
   <section class="py-20 px-6 bg-white text-center">
     <h2 class="text-3xl font-bold text-blue-800 mb-4">About Us</h2>
     <p class="text-gray-700 max-w-3xl mx-auto">
-      We are committed to delivering exceptional user experiences using modern technologies like Angular and Tailwind CSS.
+      We are committed to delivering exceptional user experiences using modern technologies like Angular and Tailwind
+      CSS.
     </p>
   </section>
 
@@ -41,10 +45,14 @@
     </p>
     <div class="max-w-xl mx-auto text-left">
       <form class="space-y-4">
-        <input type="text" placeholder="Your Name" class="w-full border text-black border-gray-300 p-3 rounded-lg" />
-        <input type="email" placeholder="Your Email" class="w-full border text-black border-gray-300 p-3 rounded-lg" />
-        <textarea rows="4" placeholder="Your Message" class="w-full border text-black border-gray-300 p-3 rounded-lg"></textarea>
-        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg transition duration-200">
+        <input type="text" name="name" placeholder="Your Name"
+          class="w-full border text-black border-gray-300 p-3 rounded-lg placeholder-gray-400" />
+        <input type="email" name="email" placeholder="Your Email"
+          class="w-full border text-black border-gray-300 p-3 rounded-lg placeholder-gray-400" />
+        <textarea rows="4" name="message" placeholder="Your Message"
+          class="w-full border text-black border-gray-300 p-3 rounded-lg placeholder-gray-400"></textarea>
+        <button type="submit"
+          class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg transition duration-200">
           Send Message
         </button>
       </form>
