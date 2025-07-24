@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { FEATURES } from '../data/features';
+import { SkeletonComponent } from './skeleton/skeleton.component';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, SkeletonComponent],
   templateUrl: './landing.component.html',
 })
 export class LandingComponent implements AfterViewInit {
