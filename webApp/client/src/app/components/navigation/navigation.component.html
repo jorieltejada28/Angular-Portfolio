@@ -1,56 +1,52 @@
-<!-- Loading Skeleton -->
+<!-- Show Skeleton While Loading -->
 <app-skeleton *ngIf="isLoading" />
 
-<!-- Top Nav with Dropdown -->
-<nav class="bg-gray-100 px-6 py-2 flex justify-between items-center text-sm">
-  <div></div> <!-- Empty div to push content to the right -->
-
-  <!-- Right-side Dropdown Menu -->
-  <div class="flex space-x-4">
-    <!-- Button 2: Help (with dropdown) -->
-    <div class="relative group">
-      <button class="flex items-center space-x-1 text-gray-700 hover:text-blue-600 focus:outline-none cursor-pointer">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-          stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M8 10a4 4 0 118 0c0 1.657-1.343 3-3 3h-.5a1.5 1.5 0 000 3M12 18h.01" />
-          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none" />
-        </svg>
-        <span>Help</span>
-      </button>
-
-      <!-- Dropdown only for Help -->
-      <ul
-        class="absolute hidden group-hover:block right-0 w-52 bg-white border border-gray-200 rounded-lg shadow-md z-10">
-        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Help Center</a></li>
-        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">FAQs</a></li>
-        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Contact Support</a></li>
-        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Report an Issue</a></li>
-      </ul>
+<!-- Show Main Navigation After Loading -->
+<ng-container *ngIf="!isLoading">
+  <!-- Top Nav with Dropdown -->
+  <nav class="bg-gray-100 px-6 py-2 flex justify-between items-center text-sm">
+    <div></div>
+    <div class="flex space-x-4">
+      <!-- Help Dropdown -->
+      <div class="relative group">
+        <button class="flex items-center space-x-1 text-gray-700 hover:text-blue-600 focus:outline-none cursor-pointer">
+          <!-- SVG Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M8 10a4 4 0 118 0c0 1.657-1.343 3-3 3h-.5a1.5 1.5 0 000 3M12 18h.01" />
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none" />
+          </svg>
+          <span>Help</span>
+        </button>
+        <ul
+          class="absolute hidden group-hover:block right-0 w-52 bg-white border border-gray-200 rounded-lg shadow-md z-10">
+          <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Help Center</a></li>
+          <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">FAQs</a></li>
+          <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Contact Support</a></li>
+          <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Report an Issue</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-  </div>
-</nav>
+  <!-- Main Nav -->
+  <nav class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
+    <a routerLink="/" class="text-2xl font-bold text-blue-600 ml-15">My App</a>
 
-<!-- Main Navigation -->
-<nav *ngIf="!isLoading" class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
-  <!-- Logo -->
-  <a routerLink="/" class="text-2xl font-bold text-blue-600 ml-15">My App</a>
+    <ul class="flex space-x-6">
+      <li *ngFor="let link of navLinks">
+        <a [routerLink]="link.path" routerLinkActive="text-blue-500" [ngClass]="navLinkClass">
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
 
-  <!-- Center Links -->
-  <ul class="flex space-x-6">
-    <li *ngFor="let link of navLinks">
-      <a [routerLink]="link.path" routerLinkActive="text-blue-500" [ngClass]="navLinkClass">
-        {{ link.label }}
+    <div class="flex space-x-4 mr-15">
+      <a *ngFor="let auth of authLinks" [routerLink]="auth.path" routerLinkActive="text-blue-500"
+        [class]="buttonClass + ' ' + auth.classes">
+        {{ auth.label }}
       </a>
-    </li>
-  </ul>
-
-  <!-- Right Auth -->
-  <div class="flex space-x-4 mr-15">
-    <a *ngFor="let auth of authLinks" [routerLink]="auth.path" routerLinkActive="text-blue-500"
-      [class]="buttonClass + ' ' + auth.classes">
-      {{ auth.label }}
-    </a>
-  </div>
-</nav>
+    </div>
+  </nav>
+</ng-container>
