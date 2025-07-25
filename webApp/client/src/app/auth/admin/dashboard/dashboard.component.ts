@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../../components/sidebar/sidebar.component';
 import { TopNavbarComponent } from '../../../components/top-navbar/top-navbar.component';
 import { Title } from '@angular/platform-browser';
-import { NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
+import { NgxChartsModule, ScaleType, LegendPosition } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,62 +16,58 @@ export class DashboardComponent implements OnInit {
 
   sidebarOpen = true;
 
-  pieChartData1 = [
-    { name: 'Human Resources', value: 25 },
-    { name: 'Engineering Department', value: 40 },
-    { name: 'Sales Team', value: 20 },
-    { name: 'Marketing Division', value: 15 }
-  ];
+  // ✅ Use enum for legend position
+  legendPosition: LegendPosition = LegendPosition.Right;
 
   rawLineChartData = [
     {
-      name: 'Algeria',
+      name: 'Saint Pierre and Miquelon',
       series: [
-        { value: 6613, name: '2016-09-21T09:33:52.454Z' },
-        { value: 3137, name: '2016-09-13T19:07:17.538Z' },
-        { value: 2201, name: '2016-09-16T22:50:01.450Z' },
-        { value: 4283, name: '2016-09-14T23:40:10.101Z' },
-        { value: 2416, name: '2016-09-23T17:17:14.127Z' }
+        { value: 2535, name: '2016-09-15T20:04:54.459Z' },
+        { value: 5824, name: '2016-09-14T03:48:49.904Z' },
+        { value: 6755, name: '2016-09-17T09:55:53.692Z' },
+        { value: 3089, name: '2016-09-15T21:37:32.628Z' },
+        { value: 2609, name: '2016-09-21T10:28:44.546Z' }
       ]
     },
     {
-      name: 'Gibraltar',
+      name: 'Afghanistan',
       series: [
-        { value: 3246, name: '2016-09-21T09:33:52.454Z' },
-        { value: 5245, name: '2016-09-13T19:07:17.538Z' },
-        { value: 3774, name: '2016-09-16T22:50:01.450Z' },
-        { value: 5507, name: '2016-09-14T23:40:10.101Z' },
-        { value: 3997, name: '2016-09-23T17:17:14.127Z' }
+        { value: 2440, name: '2016-09-15T20:04:54.459Z' },
+        { value: 2925, name: '2016-09-14T03:48:49.904Z' },
+        { value: 6851, name: '2016-09-17T09:55:53.692Z' },
+        { value: 2366, name: '2016-09-15T21:37:32.628Z' },
+        { value: 4962, name: '2016-09-21T10:28:44.546Z' }
       ]
     },
     {
-      name: 'Poland',
+      name: 'American Samoa',
       series: [
-        { value: 2752, name: '2016-09-21T09:33:52.454Z' },
-        { value: 4774, name: '2016-09-13T19:07:17.538Z' },
-        { value: 5475, name: '2016-09-16T22:50:01.450Z' },
-        { value: 6282, name: '2016-09-14T23:40:10.101Z' },
-        { value: 5828, name: '2016-09-23T17:17:14.127Z' }
+        { value: 2099, name: '2016-09-15T20:04:54.459Z' },
+        { value: 4952, name: '2016-09-14T03:48:49.904Z' },
+        { value: 3911, name: '2016-09-17T09:55:53.692Z' },
+        { value: 5144, name: '2016-09-15T21:37:32.628Z' },
+        { value: 5891, name: '2016-09-21T10:28:44.546Z' }
       ]
     },
     {
-      name: 'Italy',
+      name: 'Afghanistan',
       series: [
-        { value: 5494, name: '2016-09-21T09:33:52.454Z' },
-        { value: 5170, name: '2016-09-13T19:07:17.538Z' },
-        { value: 4754, name: '2016-09-16T22:50:01.450Z' },
-        { value: 6977, name: '2016-09-14T23:40:10.101Z' },
-        { value: 2999, name: '2016-09-23T17:17:14.127Z' }
+        { value: 5436, name: '2016-09-15T20:04:54.459Z' },
+        { value: 5142, name: '2016-09-14T03:48:49.904Z' },
+        { value: 6246, name: '2016-09-17T09:55:53.692Z' },
+        { value: 6888, name: '2016-09-15T21:37:32.628Z' },
+        { value: 5214, name: '2016-09-21T10:28:44.546Z' }
       ]
     },
     {
-      name: 'Mongolia',
+      name: 'Svalbard and Jan Mayen',
       series: [
-        { value: 5308, name: '2016-09-21T09:33:52.454Z' },
-        { value: 5237, name: '2016-09-13T19:07:17.538Z' },
-        { value: 3313, name: '2016-09-16T22:50:01.450Z' },
-        { value: 2979, name: '2016-09-14T23:40:10.101Z' },
-        { value: 3653, name: '2016-09-23T17:17:14.127Z' }
+        { value: 4765, name: '2016-09-15T20:04:54.459Z' },
+        { value: 5576, name: '2016-09-14T03:48:49.904Z' },
+        { value: 6415, name: '2016-09-17T09:55:53.692Z' },
+        { value: 2647, name: '2016-09-15T21:37:32.628Z' },
+        { value: 2642, name: '2016-09-21T10:28:44.546Z' }
       ]
     }
   ];
@@ -93,19 +89,22 @@ export class DashboardComponent implements OnInit {
 
     this.titleService.setTitle('Dashboard');
 
-    // Format lineChartData dates into 'MMM dd' like 'Sep 13'
-    this.lineChartData = this.rawLineChartData.map(country => ({
-      name: country.name,
-      series: country.series
+    // Sort and format date for readability
+    this.lineChartData = this.rawLineChartData.map(item => ({
+      name: item.name,
+      series: item.series
         .sort((a, b) => new Date(a.name).getTime() - new Date(b.name).getTime())
         .map(point => ({
           value: point.value,
-          name: new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' }).format(new Date(point.name))
+          name: new Intl.DateTimeFormat('en-US', {
+            month: 'short',
+            day: 'numeric'
+          }).format(new Date(point.name))
         }))
     }));
   }
 
-  toggleSidebar() {
+  toggleSidebar(): void {
     this.sidebarOpen = !this.sidebarOpen;
     localStorage.setItem('sidebarOpen', this.sidebarOpen.toString());
   }
