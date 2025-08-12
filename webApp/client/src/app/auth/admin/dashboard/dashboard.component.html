@@ -54,6 +54,21 @@
 
       <!-- Table BELOW the Line Chart -->
       <div class="bg-white rounded shadow-md p-6 px-4 overflow-x-auto ml-4 w-287">
+        <!-- Filter dropdown + input -->
+        <div class="flex items-center mb-4 space-x-4 max-w-md px-4">
+          <select [(ngModel)]="filterColumn" class="p-2 border border-gray-300 rounded"
+            aria-label="Select filter column">
+            <option value="date">Date</option>
+            <option value="metricA">Metric A</option>
+            <option value="metricB">Metric B</option>
+            <option value="metricC">Metric C</option>
+            <option value="notes">Notes</option>
+          </select>
+
+          <input type="text" [(ngModel)]="filterText" (input)="applyFilter()" placeholder="Enter filter text"
+            class="flex-grow p-2 border border-gray-300 rounded" aria-label="Filter text" />
+        </div>
+
         <h3 class="text-lg font-semibold mb-4">Data Table</h3>
         <table class="min-w-full table-auto border-collapse border border-gray-300">
           <thead>
@@ -66,26 +81,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="hover:bg-gray-100 cursor-pointer">
-              <td class="border border-gray-300 px-4 py-2">2025-08-01</td>
-              <td class="border border-gray-300 px-4 py-2">123</td>
-              <td class="border border-gray-300 px-4 py-2">456</td>
-              <td class="border border-gray-300 px-4 py-2">789</td>
-              <td class="border border-gray-300 px-4 py-2">Sample note 1</td>
-            </tr>
-            <tr class="hover:bg-gray-100 cursor-pointer">
-              <td class="border border-gray-300 px-4 py-2">2025-08-02</td>
-              <td class="border border-gray-300 px-4 py-2">234</td>
-              <td class="border border-gray-300 px-4 py-2">567</td>
-              <td class="border border-gray-300 px-4 py-2">890</td>
-              <td class="border border-gray-300 px-4 py-2">Sample note 2</td>
-            </tr>
-            <tr class="hover:bg-gray-100 cursor-pointer">
-              <td class="border border-gray-300 px-4 py-2">2025-08-03</td>
-              <td class="border border-gray-300 px-4 py-2">345</td>
-              <td class="border border-gray-300 px-4 py-2">678</td>
-              <td class="border border-gray-300 px-4 py-2">901</td>
-              <td class="border border-gray-300 px-4 py-2">Sample note 3</td>
+            <tr *ngFor="let row of filteredTableData" class="hover:bg-gray-100 cursor-pointer">
+              <td class="border border-gray-300 px-4 py-2">{{ row.date }}</td>
+              <td class="border border-gray-300 px-4 py-2">{{ row.metricA }}</td>
+              <td class="border border-gray-300 px-4 py-2">{{ row.metricB }}</td>
+              <td class="border border-gray-300 px-4 py-2">{{ row.metricC }}</td>
+              <td class="border border-gray-300 px-4 py-2">{{ row.notes }}</td>
             </tr>
           </tbody>
         </table>

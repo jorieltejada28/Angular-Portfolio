@@ -4,22 +4,33 @@ import { SidebarComponent } from '../../../components/sidebar/sidebar.component'
 import { TopNavbarComponent } from '../../../components/top-navbar/top-navbar.component';
 import { Title } from '@angular/platform-browser';
 import { NgxChartsModule, ScaleType, LegendPosition } from '@swimlane/ngx-charts';
+import { FormsModule } from '@angular/forms';
+
+// Define interfaces for chart data
+interface ChartSeries {
+  value: number;
+  name: string; // date string
+}
+
+interface ChartData {
+  name: string; // country or region name
+  series: ChartSeries[];
+}
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, SidebarComponent, TopNavbarComponent, NgxChartsModule],
+  imports: [CommonModule, SidebarComponent, TopNavbarComponent, NgxChartsModule, FormsModule],
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
   constructor(private titleService: Title) {}
 
   sidebarOpen = true;
-
-  // ✅ Use enum for legend position
   legendPosition: LegendPosition = LegendPosition.Right;
 
-  rawLineChartData = [
+  // Use typed array for your chart data
+  rawLineChartData: ChartData[] = [
     {
       name: 'Saint Pierre and Miquelon',
       series: [
@@ -72,7 +83,7 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-  lineChartData: any[] = [];
+  lineChartData: ChartData[] = [];
 
   colorScheme = {
     name: 'customScheme',
@@ -80,6 +91,35 @@ export class DashboardComponent implements OnInit {
     group: ScaleType.Ordinal,
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#7aa3e5']
   };
+
+  tableData = [
+    {
+      date: '2025-08-01',
+      metricA: 123,
+      metricB: 456,
+      metricC: 789,
+      notes: 'Sample note 1'
+    },
+    {
+      date: '2025-08-02',
+      metricA: 234,
+      metricB: 567,
+      metricC: 890,
+      notes: 'Sample note 2'
+    },
+    {
+      date: '2025-08-03',
+      metricA: 345,
+      metricB: 678,
+      metricC: 901,
+      notes: 'Sample note 3'
+    }
+  ];
+
+  filteredTableData = [...this.tableData];
+
+  filterColumn: 'date' | 'metricA' | 'metricB' | 'metricC' | 'notes' = 'date';
+  filterText = '';
 
   ngOnInit(): void {
     const storedSidebar = localStorage.getItem('sidebarOpen');
@@ -89,8 +129,8 @@ export class DashboardComponent implements OnInit {
 
     this.titleService.setTitle('Dashboard');
 
-    // Sort and format date for readability
-    this.lineChartData = this.rawLineChartData.map(item => ({
+    // Now TypeScript knows the type of `item` so no more error
+    this.lineChartData = this.rawLineChartData.map((item: ChartData) => ({
       name: item.name,
       series: item.series
         .sort((a, b) => new Date(a.name).getTime() - new Date(b.name).getTime())
@@ -107,5 +147,18 @@ export class DashboardComponent implements OnInit {
   toggleSidebar(): void {
     this.sidebarOpen = !this.sidebarOpen;
     localStorage.setItem('sidebarOpen', this.sidebarOpen.toString());
+  }
+
+  applyFilter(): void {
+    const filter = this.filterText.trim().toLowerCase();
+    if (!filter) {
+      this.filteredTableData = [...this.tableData];
+      return;
+    }
+
+    this.filteredTableData = this.tableData.filter(row => {
+      const value = row[this.filterColumn];
+      return value.toString().toLowerCase().includes(filter);
+    });
   }
 }
