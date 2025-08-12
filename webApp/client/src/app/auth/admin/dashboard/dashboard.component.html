@@ -9,7 +9,6 @@
 
     <!-- Dashboard Main -->
     <main class="flex-1 p-6 bg-gray-100 overflow-y-auto text-gray-700">
-      <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
 
       <!-- Cards ABOVE the Chart -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 px-4">
@@ -39,16 +38,59 @@
       </div>
 
       <!-- Line Chart BELOW the Cards -->
-      <div class="grid grid-cols-1 gap-6 px-4">
+      <div class="grid grid-cols-1 gap-6 px-4 mb-6">
         <div
-          class="bg-white p-6 rounded shadow h-[400px] w-full flex flex-col justify-center items-center overflow-x-auto">
-          <h3 class="text-lg font-semibold mb-4 text-center">Multi-Series Line Chart</h3>
+          class="bg-white p-6 rounded shadow-md h-[400px] w-full flex flex-col justify-center items-center overflow-x-auto">
+
+          <h3 class="text-lg font-semibold mb-4 text-center">Line Graph</h3>
+
           <ngx-charts-line-chart [results]="lineChartData" [xAxis]="true" [yAxis]="true" [legend]="true"
             [legendPosition]="legendPosition" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="'Date'"
             [yAxisLabel]="'Value'" [autoScale]="true" [view]="[1000, 300]" [animations]="true" [scheme]="colorScheme">
           </ngx-charts-line-chart>
+
         </div>
       </div>
+
+      <!-- Table BELOW the Line Chart -->
+      <div class="bg-white rounded shadow-md p-6 px-4 overflow-x-auto ml-4 w-287">
+        <h3 class="text-lg font-semibold mb-4">Data Table</h3>
+        <table class="min-w-full table-auto border-collapse border border-gray-300">
+          <thead>
+            <tr class="bg-gray-200 text-gray-700">
+              <th class="border border-gray-300 px-4 py-2 text-left">Date</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">Metric A</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">Metric B</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">Metric C</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+              <td class="border border-gray-300 px-4 py-2">2025-08-01</td>
+              <td class="border border-gray-300 px-4 py-2">123</td>
+              <td class="border border-gray-300 px-4 py-2">456</td>
+              <td class="border border-gray-300 px-4 py-2">789</td>
+              <td class="border border-gray-300 px-4 py-2">Sample note 1</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+              <td class="border border-gray-300 px-4 py-2">2025-08-02</td>
+              <td class="border border-gray-300 px-4 py-2">234</td>
+              <td class="border border-gray-300 px-4 py-2">567</td>
+              <td class="border border-gray-300 px-4 py-2">890</td>
+              <td class="border border-gray-300 px-4 py-2">Sample note 2</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+              <td class="border border-gray-300 px-4 py-2">2025-08-03</td>
+              <td class="border border-gray-300 px-4 py-2">345</td>
+              <td class="border border-gray-300 px-4 py-2">678</td>
+              <td class="border border-gray-300 px-4 py-2">901</td>
+              <td class="border border-gray-300 px-4 py-2">Sample note 3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </main>
   </div>
 </div>
