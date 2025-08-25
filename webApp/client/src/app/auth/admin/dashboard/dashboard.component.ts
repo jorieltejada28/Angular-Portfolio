@@ -92,35 +92,6 @@ export class DashboardComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#7aa3e5']
   };
 
-  tableData = [
-    {
-      date: '2025-08-01',
-      metricA: 123,
-      metricB: 456,
-      metricC: 789,
-      notes: 'Sample note 1'
-    },
-    {
-      date: '2025-08-02',
-      metricA: 234,
-      metricB: 567,
-      metricC: 890,
-      notes: 'Sample note 2'
-    },
-    {
-      date: '2025-08-03',
-      metricA: 345,
-      metricB: 678,
-      metricC: 901,
-      notes: 'Sample note 3'
-    }
-  ];
-
-  filteredTableData = [...this.tableData];
-
-  filterColumn: 'date' | 'metricA' | 'metricB' | 'metricC' | 'notes' = 'date';
-  filterText = '';
-
   ngOnInit(): void {
     const storedSidebar = localStorage.getItem('sidebarOpen');
     if (storedSidebar !== null) {
@@ -147,18 +118,5 @@ export class DashboardComponent implements OnInit {
   toggleSidebar(): void {
     this.sidebarOpen = !this.sidebarOpen;
     localStorage.setItem('sidebarOpen', this.sidebarOpen.toString());
-  }
-
-  applyFilter(): void {
-    const filter = this.filterText.trim().toLowerCase();
-    if (!filter) {
-      this.filteredTableData = [...this.tableData];
-      return;
-    }
-
-    this.filteredTableData = this.tableData.filter(row => {
-      const value = row[this.filterColumn];
-      return value.toString().toLowerCase().includes(filter);
-    });
   }
 }
